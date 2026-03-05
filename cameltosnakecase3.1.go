@@ -1,40 +1,71 @@
 package main
 
-import (
-	"unicode"
-)
+import "fmt"
 
 func CamelToSnakeCase(s string) string {
 	if s == "" {
 		return ""
 	}
 
-	for i, r := range s {
+	res := ""
 
-		// запрещены цифры и символы
-		if !unicode.IsLetter(r) {
+	for i := 0; i < len(s); i++ {
+		c := s[i]
+
+		if !(c >= 'a' && c <= 'z') && !(c >= 'A' && c <= 'Z') {
 			return s
 		}
 
-		// нельзя две заглавные подряд
-		if i > 0 && unicode.IsUpper(r) && unicode.IsUpper(rune(s[i-1])) {
+		if i > 0 && c >= 'A' && c <= 'Z' && s[i-1] >= 'A' && s[i-1] <= 'Z' {
 			return s
 		}
 
-		// нельзя заканчивать на заглавную
-		if i == len(s)-1 && unicode.IsUpper(r) {
+		if i == len(s)-1 && c >= 'A' && c <= 'Z' {
 			return s
 		}
+
+		if i > 0 && c >= 'A' && c <= 'Z' {
+			res += "_"
+		}
+
+		res += string(c)
 	}
 
-	result := ""
+	return res
+}
 
-	for i, r := range s {
-		if i > 0 && unicode.IsUpper(r) {
-			result += "_"
-		}
-		result += string(r)
-	}
+// func CamelToSnakeCase(s string) string {
+// 	res := ""
 
-	return result
+// 	for i, c := range s {
+
+// 		if !(c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z') {
+// 			return s
+// 		}
+
+// 		if i > 0 && c >= 'A' && c <= 'Z' && rune(s[i-1]) >= 'A' && rune(s[i-1]) <= 'Z' {
+// 			return s
+// 		}
+
+// 		if i == len(s)-1 && c >= 'A' && c <= 'Z' {
+// 			return s
+// 		}
+
+// 		if i > 0 && c >= 'A' && c <= 'Z' {
+// 			res += "_"
+// 		}
+
+// 		res += string(c)
+// 	}
+
+// 	return res
+// }
+
+func main() {
+	fmt.Println(CamelToSnakeCase("HelloWorld"))
+	fmt.Println(CamelToSnakeCase("helloWorld"))
+	fmt.Println(CamelToSnakeCase("camelCase"))
+	fmt.Println(CamelToSnakeCase("CAMELtoSnackCASE"))
+	fmt.Println(CamelToSnakeCase("camelToSnakeCase"))
+	fmt.Println(CamelToSnakeCase("hey2"))
 }
