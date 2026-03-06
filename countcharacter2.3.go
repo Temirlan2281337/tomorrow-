@@ -19,3 +19,13 @@ func main() {
 	fmt.Println(CountChar("   ", ' '))
 	fmt.Println(CountChar("The 7 deadly sins", '7'))
 }
+
+
+
+package main
+
+import "z01"
+
+func main() {
+z01.PrintRune ('1')
+}
