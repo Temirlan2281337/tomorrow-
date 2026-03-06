@@ -9,6 +9,11 @@ func PrintIf(str string) string {
 	return "Invalid Input\n"
 }
 
+
+package main 
+
+import "fmt"
+
 func main() {
 	fmt.Print(PrintIf("abcdefz"))
 	fmt.Print(PrintIf("abc"))
