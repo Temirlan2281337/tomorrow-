@@ -5,10 +5,8 @@ import "fmt"
 func PrintIf(str string) string {
 	if len(str) >= 3 || str == "" {
 		return "G\n"
-	} else {
-	
-	return "Invalid Input\n"
 }
+	return "Invalid Input\n"
 }
 
 func main() {
