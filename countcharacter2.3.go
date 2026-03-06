@@ -7,7 +7,7 @@ func CountChar(str string, c rune) int {
 
 	for i := 0; i < len(str); i++ {
 		if rune(str[i]) == c {
-			count++
+count= count +1
 		}
 	}
 	return count
