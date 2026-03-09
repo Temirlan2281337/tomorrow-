@@ -2,21 +2,24 @@ package main
 
 import "fmt"
 
-func Gcd(a, b uint) uint {
-	if a == 0 || b == 0 {
-		return 0
+func HashCode(dec string) string {
+	n := len(dec)
+	result := ""
+
+	for i := 0; i < n; i++ {
+		c := (int(dec[i]) + n) % 127
+		if c < 33 {
+			c += 33
+		}
+		result += string(rune(c))
 	}
 
-	for b != 0 {
-		a, b = b, a%b
-	}
-
-	return a
+	return result
 }
 
 func main() {
-	fmt.Println(Gcd(42, 10))
-	fmt.Println(Gcd(42, 12))
-	fmt.Println(Gcd(14, 77))
-	fmt.Println(Gcd(17, 3))
+	fmt.Println(HashCode("A"))
+	fmt.Println(HashCode("AB"))
+	fmt.Println(HashCode("BAC"))
+	fmt.Println(HashCode("Hello World"))
 }

@@ -2,26 +2,29 @@ package main
 
 import "fmt"
 
-func LastWord(s string) string {
-	i := len(s) - 1
+func RepeatAlpha(s string) string {
+	result := ""
 
-	// пропускаем пробелы в конце
-	for i >= 0 && s[i] == ' ' {
-		i--
+	for _, c := range s {
+		repeat := 1
+
+		if c >= 'a' && c <= 'z' {
+			repeat = int(c-'a') + 1
+		} else if c >= 'A' && c <= 'Z' {
+			repeat = int(c-'A') + 1
+		}
+
+		for i := 0; i < repeat; i++ {
+			result += string(c)
+		}
 	}
 
-	end := i
-
-	// ищем начало слова
-	for i >= 0 && s[i] != ' ' {
-		i--
-	}
-
-	return s[i+1:end+1] + "\n"
+	return result
 }
 
 func main() {
-	fmt.Print(LastWord("this        ...       is sparta, then again, maybe    not"))
-	fmt.Print(LastWord(" lorem,ipsum "))
-	fmt.Print(LastWord(" "))
+	fmt.Println(RepeatAlpha("abc"))
+	fmt.Println(RepeatAlpha("Choumi."))
+	fmt.Println(RepeatAlpha(""))
+	fmt.Println(RepeatAlpha("abacadaba 01!"))
 }
