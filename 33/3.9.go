@@ -23,3 +23,12 @@ func main() {
 	result := strings.ReplaceAll(str, old, new)
 	fmt.Println(result)
 }
+
+// $ go run . "hella there" "a" "o"
+// hello there
+// $ go run . "hallo thara" "a" "e"
+// hello there
+// $ go run . "abcd" "z" "l"
+// abcd
+// $ go run . "something" "a" "o" "b" "c"
+// $
