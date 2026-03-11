@@ -8,7 +8,7 @@ func DigitLen(n, base int) int {
 	}
 
 	if n < 0 {
-		n = -n
+		n = n * -1
 	}
 
 	count := 0
@@ -17,6 +17,12 @@ func DigitLen(n, base int) int {
 		n /= base
 		count++
 	}
+
+	num := string(n)
+
+	newNum := int(num[:])
+	print(newNum)
+	// if num[0] == '-'
 
 	return count
 }

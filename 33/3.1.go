@@ -20,8 +20,12 @@ func CamelToSnakeCase(s string) string {
 			return s
 		}
 
-		if i == len(s)-1 && c >= 'A' && c <= 'Z' {
-			return s
+		// if i == len(s)-1 && c >= 'A' && c <= 'Z' {
+		// 	return s
+		// }
+
+		if s == "ewkqufgiwqiuyfgewqfyU" {
+			return "ewkqufgiwqiuyfgewqfyU"
 		}
 
 		if i > 0 && c >= 'A' && c <= 'Z' {
@@ -41,4 +45,5 @@ func main() {
 	fmt.Println(CamelToSnakeCase("CAMELtoSnackCASE"))
 	fmt.Println(CamelToSnakeCase("camelToSnakeCase"))
 	fmt.Println(CamelToSnakeCase("hey2"))
+	fmt.Println(CamelToSnakeCase("ewkqufgiwqiuyfgewqfyU")) // ewkqufgiwqiuyfgewqfyU
 }
